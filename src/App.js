@@ -61,7 +61,6 @@ class App extends Component {
   };
 
   render() {
-
     /* On outsource le JSX pour le mettre dans une variable.
     Ca permet de garder un return propre. Il faut après  
     le render car c'est lui qui rends la page et le state à jour.
@@ -89,6 +88,7 @@ class App extends Component {
         </div>
       );
 
+      // On crée un array qui contiendra les classes dont on a besoin.
       btnClass.push(classes.Red);
     }
 
@@ -100,11 +100,16 @@ class App extends Component {
       assignedClasses.push(classes.bold);
     }
 
+    // Maintenant on join chacun des arrays assignedClass et btnClass qui nous donneront des strings.
+    // Ces strings contiendront les classes CSS à appliquer.
     return (
       <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>
         <p className={assignedClasses.join(' ')}>This is really working!</p>
-        <button className={btnClass.join(' ')} onClick={this.tooglePersonsHandler}>
+        <button
+          className={btnClass.join(' ')}
+          onClick={this.tooglePersonsHandler}
+        >
           Toggle Persons
         </button>
         {persons}
