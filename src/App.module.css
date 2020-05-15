@@ -22,11 +22,11 @@
   font-size: large;
 }
 
-.Red {
+.red {
   color: red;
 }
 
-.Bold {
+.bold {
   font-weight: bold;
 }
 
@@ -39,7 +39,7 @@
   }
 }
 
-.Button {
+.App button {
   background-color: green;
   color: white;
   font: inherit;
@@ -48,15 +48,15 @@
   cursor: pointer;
 }
 
-.Button:hover {
+.App button:hover {
   background-color: lightgreen;
   color: black;
 }
 
-.Button.Red {
+.App button.Red {
   background-color: red;
 }
 
-.Button.Red:hover {
+.App button.Red:hover {
   background-color: salmon;
 }

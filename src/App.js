@@ -69,7 +69,7 @@ class App extends Component {
     dans le code dans le cas ou this.state.showPersons est faux */
     let persons = null;
 
-    let btnClass = [classes.Button];
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -88,8 +88,7 @@ class App extends Component {
         </div>
       );
 
-      // On crée un array qui contiendra les classes dont on a besoin.
-      btnClass.push(classes.Red);
+      btnClass = classes.Red;
     }
 
     let assignedClasses = [];
@@ -100,14 +99,13 @@ class App extends Component {
       assignedClasses.push(classes.bold);
     }
 
-    // Maintenant on join chacun des arrays assignedClass et btnClass qui nous donneront des strings.
-    // Ces strings contiendront les classes CSS à appliquer.
+    
     return (
       <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>
         <p className={assignedClasses.join(' ')}>This is really working!</p>
         <button
-          className={btnClass.join(' ')}
+          className={btnClass}
           onClick={this.tooglePersonsHandler}
         >
           Toggle Persons
