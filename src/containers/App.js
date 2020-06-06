@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; /* toujours importer React*/
 import classes from './App.module.css';
-import Person from '../components/Persons/Person/Person';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   /* attention, ce sont des : et non des = */
@@ -63,51 +63,31 @@ class App extends Component {
 
   render() {
     /* On outsource le JSX pour le mettre dans une variable.
-    Ca permet de garder un return propre. Il faut après  
+    Ca permet de garder un return propre. Il faut le mettre après  
     le render car c'est lui qui rends la page et le state à jour.
-    Il faut absolument définir persons dès le début,
-    sinon la variable n'existera pas et ne pourra pas être définie 
+    Il faut absolument définir persons dès le début et l'initier à null, car on l'utilise 
+    conditionnellement à la valeur de this.state.showPersons.
+    Sinon la variable n'existera pas et ne pourra pas être définie 
     dans le code dans le cas ou this.state.showPersons est faux */
     let persons = null;
 
-    let btnClass = '';
-
     if (this.state.showPersons) {
       persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <ErrorBoundary key={person.id}>
-                <Person
-                  click={() => this.deletePersonHandler(index)}
-                  name={person.name}
-                  age={person.age}
-                  changed={(event) => this.nameChangedHandler(event, person.id)}
-                />
-              </ErrorBoundary>
-            );
-          })}
-        </div>
+        <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        />
       );
-
-      btnClass = classes.Red;
-    }
-
-    let assignedClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red);
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold);
     }
 
     return (
       <div className={classes.App}>
-        <h1>Hi, I'm a React App</h1>
-        <p className={assignedClasses.join(' ')}>This is really working!</p>
-        <button className={btnClass} onClick={this.tooglePersonsHandler}>
-          Toggle Persons
-        </button>
+        <Cockpit
+          persons={this.state.persons}
+          showPersons={this.state.showPersons}
+          clicked={this.tooglePersonsHandler}
+        />
         {persons}
       </div>
     );
