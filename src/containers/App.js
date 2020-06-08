@@ -24,8 +24,8 @@ class App extends Component {
     return state; // ici on a écrit state, mais sous jacent, c'est le state après update
   }
 
-  componentDidMount(){
-    console.log('[App.js] componentDidMount')
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
   }
 
   tooglePersonsHandler = () => {

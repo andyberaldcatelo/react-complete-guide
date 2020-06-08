@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Person.module.css';
 
-const person = (props) => {
-  console.log('[Person.js] rendering...');
-  return (
-    <div className={classes.Person}>
-      <p onClick={props.click}>
-        I'm {props.name} and I'm {props.age}
-      </p>
-      <input type='text' defaultValue={props.name} onChange={props.changed} />
-      <p>{props.children}</p>
-    </div>
-  );
-};
+// Pour utiliser les lifecycle hooks, il faut absolument avoir un component class-based
 
-export default person;
+class Person extends Component {
+  render() {
+    console.log('[Person.js] rendering...');
+    return (
+      <div className={classes.Person}>
+        <p onClick={this.props.click}>
+          I'm {this.props.name} and I'm {this.props.age}
+        </p>
+        <input
+          type='text'
+          defaultValue={this.props.name}
+          onChange={this.props.changed}
+        />
+        <p>{this.props.children}</p>
+      </div>
+    );
+  }
+}
+
+export default Person;
