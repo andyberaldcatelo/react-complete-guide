@@ -4,7 +4,11 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-  /* attention, ce sont des : et non des = */
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
+
   state = {
     persons: [
       { id: 'abc', name: 'Max', age: 29 },
@@ -14,6 +18,15 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false,
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state; // ici on a écrit state, mais sous jacent, c'est le state après update
+  }
+
+  componentDidMount(){
+    console.log('[App.js] componentDidMount')
+  }
 
   tooglePersonsHandler = () => {
     const doesShow = !this.state.showPersons;
@@ -62,6 +75,8 @@ class App extends Component {
   };
 
   render() {
+    console.log('[App.js] render');
+
     /* On outsource le JSX pour le mettre dans une variable.
     Ca permet de garder un return propre. Il faut le mettre après  
     le render car c'est lui qui rends la page et le state à jour.
