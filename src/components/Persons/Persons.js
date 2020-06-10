@@ -14,7 +14,11 @@ class Persons extends Component {
   // ici, il faut absolument retourner un booléen, sinon ça ne fonctionnera pas
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[Persons.js] shouldComponentUpdate');
-    return true;
+    if (nextProps.persons !== this.props.persons) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
