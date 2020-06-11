@@ -1,25 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
-class Persons extends Component {
+class Persons extends PureComponent {
   /*Ici vu qu'on a pas initialisé le state d'abord, la console 
   va mettre un warning indiquant que c'est une mauvaise idée 
   de retourner un state undefined.*/
-
   //static getDerivedStateFromProps(props, state) {
   //  console.log('[Persons.js] getDerivedStateFromProps');
   //  return state;
   //}
-
-  // ici, il faut absolument retourner un booléen, sinon ça ne fonctionnera pas
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('[Persons.js] shouldComponentUpdate');
-    if (nextProps.persons !== this.props.persons) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log('[Persons.js] getSnapshoBeforeUpdate');
