@@ -40,4 +40,4 @@ class Persons extends PureComponent {
   }
 }
 
-export default Persons;
+export default Persons ;
