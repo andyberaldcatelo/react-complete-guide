@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Auxiliary from '../../../hoc/Auxiliary';
 import withClass from '../../../hoc/withClass';
 import classes from './Person.module.css';
+import PropTypes from 'prop-types';
 
 // Pour utiliser les lifecycle hooks, il faut absolument avoir un component class-based
 
@@ -24,5 +25,12 @@ class Person extends Component {
     );
   }
 }
+
+Person.propTypes = {
+  click: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func,
+};
 
 export default withClass(Person, classes.Person);
