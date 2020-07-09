@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.module.css';
 
 const Cockpit = (props) => {
-const toogleBtnRef = useRef(null);
+  const toogleBtnRef = useRef(null);
 
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
@@ -39,6 +39,7 @@ const toogleBtnRef = useRef(null);
       <button ref={toogleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
+      <button onClick={props.login}>Log in</button>
     </div>
   );
 };

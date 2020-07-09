@@ -21,6 +21,7 @@ class App extends Component {
     showPersons: false,
     showCockpit: true,
     changeCounter: 0,
+    isAuthenticated: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -40,6 +41,12 @@ class App extends Component {
   componentDidUpdate() {
     console.log('[App.js] componentDidUpdate');
   }
+
+  loginHandler = () =>  {
+    this.setState({
+      isAuthenticated: true,
+    });
+  };
 
   tooglePersonsHandler = () => {
     const doesShow = !this.state.showPersons;
@@ -109,6 +116,7 @@ class App extends Component {
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangedHandler}
+          isAuthenticated={this.state.isAuthenticated}
         />
       );
     }
@@ -128,6 +136,7 @@ class App extends Component {
             personsLength={this.state.persons.length}
             showPersons={this.state.showPersons}
             clicked={this.tooglePersonsHandler}
+            login={this.loginHandler}
           />
         ) : null}
         {persons}
