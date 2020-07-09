@@ -3,6 +3,7 @@ import Auxiliary from '../../../hoc/Auxiliary';
 import withClass from '../../../hoc/withClass';
 import classes from './Person.module.css';
 import PropTypes from 'prop-types';
+import AuthContext from '../../../context/auth-context';
 
 // Pour utiliser les lifecycle hooks, il faut absolument avoir un component class-based
 
@@ -20,7 +21,16 @@ class Person extends Component {
     console.log('[Person.js] rendering...');
     return (
       <Auxiliary>
-        {this.props.isAuth ? <p>Authenticated</p> : <p>Please Log in</p>}
+        <AuthContext.Consumer>
+          {(context) =>
+            context.isAuthenticated ? (
+              <p>Authenticated</p>
+            ) : (
+              <p>Please Log in</p>
+            )
+          }
+        </AuthContext.Consumer>
+
         <p onClick={this.props.click}>
           I'm {this.props.name} and I'm {this.props.age} years old
         </p>
